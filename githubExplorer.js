@@ -1,8 +1,3 @@
-const githubData = {
-  token: "69756818fcfe57bc75d2c3c25bb2423d3aa9d2a0",
-  username: "MichaelOlatunji"
-}
-
 client = GraphQL.makeClient("https://api.github.com/graphql")
 client.setHeader("Authorization", "bearer " + githubData.token);
 
@@ -11,6 +6,7 @@ const query = `
     user(login: "MichaelOlatunji") {
       name
       login
+      avatarUrl
       twitterUsername
       followers {
         totalCount
@@ -78,10 +74,8 @@ const query = `
           forkCount
           stargazerCount
           languages(first: 1) {
-            edges {
-              node {
-                name
-              }
+            nodes {
+              name
             }
           }
         }
@@ -92,7 +86,31 @@ const query = `
   }
 `
 
-client.query(query, function(response){
+
+client.query(query, async function(response){
   console.log(response);
+  const data = response;
+  let repositoriesList = document.querySelector("#repositories");
+
+
+  const { data: { user : { repositories }}} = data
+
+  const noOfRepos = repositories.nodes.length;
+  let result = "";
+  for(let i = noOfRepos; i > 0; i--){
+    let repoData = repositories.nodes[i-1];
+    result += `<h3><a href=${repoData.url}>${repoData.name}</a></h3>
+                <p>${repoData.description ? repoData.description : ''}</p>
+                <p><div></div><span>${repoData.languages.nodes[0] ? repoData.languages.nodes[0].name : ''}<span><span>Updated </span></p>
+                <hr>`
+    // console.log(i, repositories.nodes[i]["name"])
+    console.log(repoData.languages.nodes[0])
+  }
+
+  repositoriesList.innerHTML = result;
+
+  console.log(repositories)
+
 })
+
 

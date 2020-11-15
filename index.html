@@ -2,10 +2,56 @@
 <html>
     <head>
         <title>Michael Olatunji | Profile</title>
+        <link rel="stylesheet" type="text/css" href="./styles.css" media="screen" />
     </head>
     <body>
-        <h1>Hello</h1>
+        <div class="profile">
+            <header class="profile-header">
+
+            </header>
+            <div class="profile-container">
+                <div class="profile-bio">
+
+                </div>
+                <div class="profile-tabs">
+                    <div class="tab">
+                        <div class="tab-navs">
+                            <button class="tablinks" onclick="openTab(event, 'overview')">Overview</button>
+                            <button class="tablinks" onclick="openTab(event, 'repositories')" id="defaultOpen">Repositories</button>
+                            <button class="tablinks" onclick="openTab(event, 'projects')">Projects</button>
+                            <button class="tablinks" onclick="openTab(event, 'packages')">Packages</button>
+                        </div>
+                      </div>
+                      
+                      <!-- Tab content -->
+                      <div id="overview" class="tabcontent">
+                        <h3>Overview</h3>
+                        <p>London is the capital city of England.</p>
+                      </div>
+                      
+                      <div id="repositories" class="tabcontent">
+                        <h3>Repositories</h3>
+                        <p>Repo list here.</p>
+
+
+                      </div>
+                      
+                      <div id="projects" class="tabcontent">
+                        <h3>Projects</h3>
+                        <p>Tokyo is the capital of Japan.</p>
+                      </div>
+
+                      <div id="packages" class="tabcontent">
+                        <h3>Packages</h3>
+                        <p>Lagos is the capital of Nigeria.</p>
+                      </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
         <script type="text/javascript" src="./graphQLRequestHelper.js"></script>
+        <script type="text/javascript" src="./env.js"></script>
         <script type="text/javascript" src="./githubExplorer.js"></script>
+        <script type="text/javascript" src="./tabs.js"></script>
     </body>
 </html>

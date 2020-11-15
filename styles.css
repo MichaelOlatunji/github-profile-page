@@ -1,0 +1,61 @@
+.profile-container{
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+}
+
+.profile-container .profile-bio{
+    width: 400px;
+    border: solid 1px #000;
+}
+
+.profile-container .profile-tabs{
+    width: 100%;
+    border: solid 1px #000;
+}
+
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+}
+
+.tab-navs{
+    /* border-bottom: solid 2px red; */
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+    border-bottom: solid 2px #CCC;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    border-bottom: solid 2px #F9826C
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border-top: none;
+  animation: fadeEffect .5s; /* Fading effect takes 1 second */
+}
+
+/* Go from zero to full opacity */
+@keyframes fadeEffect {
+from {opacity: 0;}
+to {opacity: 1;}
+}
