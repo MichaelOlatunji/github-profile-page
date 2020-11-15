@@ -3,7 +3,6 @@ function useMoment(date) {
   let currentDate = moment(new Date());
   let diff = currentDate.diff(createdDate);
   let d = moment.duration(diff);
-  // console.log(d.get("hours"), d.get("minutes"), d.seconds("seconds"))
   let monthDiff = d.get("months");
   let daysDiff = d.get("days");
   let hoursDiff = d.get("hours");
@@ -19,7 +18,7 @@ function useMoment(date) {
           : (output = minutesDiff + " minutes ago")
         : (output = hoursDiff + " hours ago")
       : (output = daysDiff + " days ago")
-    : (output = moment(createdDate).format("MMM d") + "ago");
+    : (output = "on "+moment(createdDate).format("MMM D"));
 
   return output;
 }

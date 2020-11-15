@@ -100,7 +100,10 @@ client.query(query, async function(response){
     let repoData = repositories.nodes[i-1];
     result += `<h3><a href=${repoData.url}>${repoData.name}</a></h3>
                 <p>${repoData.description ? repoData.description : ''}</p>
-                <p><div></div><span>${repoData.languages.nodes[0] ? repoData.languages.nodes[0].name : ''}<span><span>Updated ${useMoment(repoData.updatedAt)}</span></p>
+                <p><div></div><span class="mr-4">${repoData.languages.nodes[0] ? repoData.languages.nodes[0].name : ''}</span>
+                ${repoData.stargazerCount ? '<span class="mr-4"><i class="far fa-star"></i>'+ repoData.stargazerCount +'</span>':''}
+                ${repoData.forkCount ? '<span class="mr-4"><i class="fa fa-code-branch"></i>'+ repoData.forkCount +'</span>':''}
+                <span>Updated ${useMoment(repoData.updatedAt)}</span></p>
                 <hr>`
     // console.log(i, repositories.nodes[i]["name"])
     console.log(repoData.languages.nodes[0])
