@@ -86,7 +86,6 @@ const query = `
   }
 `
 
-
 client.query(query, async function(response){
   console.log(response);
   const data = response;
@@ -101,7 +100,7 @@ client.query(query, async function(response){
     let repoData = repositories.nodes[i-1];
     result += `<h3><a href=${repoData.url}>${repoData.name}</a></h3>
                 <p>${repoData.description ? repoData.description : ''}</p>
-                <p><div></div><span>${repoData.languages.nodes[0] ? repoData.languages.nodes[0].name : ''}<span><span>Updated </span></p>
+                <p><div></div><span>${repoData.languages.nodes[0] ? repoData.languages.nodes[0].name : ''}<span><span>Updated ${useMoment(repoData.updatedAt)}</span></p>
                 <hr>`
     // console.log(i, repositories.nodes[i]["name"])
     console.log(repoData.languages.nodes[0])
