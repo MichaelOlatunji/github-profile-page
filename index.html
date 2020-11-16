@@ -1,7 +1,14 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#000000" />
         <title>Michael Olatunji | Profile</title>
+        <meta
+        name="description"
+        content="Michael Olatunji Github Profile"
+        />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
         <link rel="stylesheet" type="text/css" href="./styles.css" media="screen" />
     </head>
@@ -11,17 +18,21 @@
 
             </header>
             <div class="profile-container">
-                <div class="profile-bio">
-
-                </div>
-                <div class="profile-tabs">
+                <div class="profile-bio" id="profile-bio"></div>
+                <div class="profile-tabs" id="profile-tabs">
                     <div class="tab">
-                        <div class="tab-navs">
+                        <!-- <div class="tab-nav"> -->
                             <button class="tablinks" onclick="openTab(event, 'overview')">Overview</button>
+                        <!-- </div> -->
+                        <!-- <div class="tab-nav"> -->
                             <button class="tablinks" onclick="openTab(event, 'repositories')" id="defaultOpen">Repositories</button>
+                        <!-- </div> -->
+                        <!-- <div class="tab-nav"> -->
                             <button class="tablinks" onclick="openTab(event, 'projects')">Projects</button>
+                        <!-- </div> -->
+                        <!-- <div class="tab-nav"> -->
                             <button class="tablinks" onclick="openTab(event, 'packages')">Packages</button>
-                        </div>
+                        <!-- </div> -->
                       </div>
                       
                       <!-- Tab content -->
@@ -32,10 +43,7 @@
                       </div>
                       
                       <div id="repositories" class="tabcontent">
-                        <h3>Repositories</h3>
-                        <p>Repo list here.</p>
-
-
+                        <p>Loading...</p>
                       </div>
                       
                       <div id="projects" class="tabcontent">
