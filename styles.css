@@ -14,6 +14,13 @@ body{
     --black-color: #000;
 }
 
+.loader{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 h1{
     font-size: var(--h1-font);
 }
@@ -103,6 +110,10 @@ hr{
     width: 100%;
 }
 
+.profile-bio .details .cont > div:nth-child(1){
+    margin-right: 16px !important;
+}
+
 .profile-bio p a:link {
     text-decoration: none;
     color: var(--black-color);
@@ -145,7 +156,7 @@ hr{
   position: sticky;
   top: 0;
   background-color: #fff;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #ddd;
   /* overflow-x: auto; */
 }
 
@@ -168,7 +179,7 @@ hr{
 
 /* Change background color of buttons on hover */
 .tab button:hover {
-    border-bottom: solid 2px #CCC;
+    border-bottom: solid 2px #ccc;
 }
 
 /* Create an active/current tablink class */
@@ -215,6 +226,92 @@ hr{
     white-space: nowrap;
 }
 
+.overview{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.overview > div:nth-child(odd){
+    margin-right: 1.2%
+}
+
+.overview > div{
+    width: 49%;
+    border: solid 1px #ddd;
+    border-radius: 5px;
+    margin-bottom: 16px;
+    /* padding: 10px; */
+}
+
+.overview > div .details{
+    display: flex;
+    flex-direction: column;
+    /* height: 100%; */
+}
+
+.overview > div .details h5{
+    word-wrap: break-word;
+}
+.overview > div .details p{
+    line-height: 20px;
+}
+.overview > div .details .last-item{
+    display: inline;
+    margin-top: auto;
+    /* height: 100%;   */
+}
+
+.overview a {
+    color: var(--link-color);
+}
+
+.overview a:link {
+    text-decoration: none;
+}
+
+.overview a:visited {
+    text-decoration: none;
+}
+
+.overview a:hover {
+    text-decoration: underline;
+}
+
+.overview a:active {
+    text-decoration: underline;
+}
+
+.line-break{
+    width: 100%;
+    border-bottom: solid 1px #ddd;
+}
+
+.icon-size{
+    font-size: 18px;
+}
+
+.repo-no{
+    background-color: #ddd;
+    color: #000;
+    border-radius: 50%;
+    padding: 4px 6px;
+}
+
+.repo-search{
+    width: 95%;
+    border: solid 1px #ddd;
+    border-radius: 5px;
+    height: 30px;
+    padding: 0 10px;
+}
+
+.repo-search:focus{
+    outline: solid 2px #3bcdde;
+}
+
+.message{
+    text-align: center;
+}
 /* Go from zero to full opacity */
 @keyframes fadeEffect {
     from {opacity: 0;}
@@ -651,6 +748,22 @@ hr{
     .profile-bio .details .cont > div:nth-child(2){
         flex: 1 1 auto;
         width: 75%;
+    }
+
+    .overview{
+        display: block;
+    }
+    
+    .overview > div:nth-child(odd){
+        margin-right: 0;
+    }
+    
+    .overview > div{
+        width: 100%;
+        border: solid 1px #ddd;
+        border-radius: 5px;
+        margin-bottom: 16px;
+        /* padding: 10px; */
     }
 
 }

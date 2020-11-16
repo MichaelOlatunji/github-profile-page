@@ -13,47 +13,54 @@
         <link rel="stylesheet" type="text/css" href="./styles.css" media="screen" />
     </head>
     <body>
-        <div class="profile">
+        <div class="loader" id="loader">
+            <div>
+                <i class="fa fa-spinner fa-spin fa_custom fa-4x"></i>
+            </div>
+        </div>
+        <div class="profile" id="profile">
             <header class="profile-header">
-
             </header>
             <div class="profile-container">
                 <div class="profile-bio" id="profile-bio"></div>
                 <div class="profile-tabs" id="profile-tabs">
                     <div class="tab">
                         <!-- <div class="tab-nav"> -->
-                            <button class="tablinks" onclick="openTab(event, 'overview')">Overview</button>
+                            <button class="tablinks" onclick="openTab(event, 'overview')" id="defaultOpen"><i class="fa fa-book-open text-default pr-1 icon-size"></i>Overview</button>
                         <!-- </div> -->
                         <!-- <div class="tab-nav"> -->
-                            <button class="tablinks" onclick="openTab(event, 'repositories')" id="defaultOpen">Repositories</button>
+                            <button class="tablinks" onclick="openTab(event, 'repositories')"><i class="fa fa-briefcase text-default pr-1 icon-size"></i>Repositories <span id="repo-no"></span></button>
                         <!-- </div> -->
                         <!-- <div class="tab-nav"> -->
-                            <button class="tablinks" onclick="openTab(event, 'projects')">Projects</button>
+                            <button class="tablinks" onclick="openTab(event, 'projects')"><i class="far fa-chart-bar text-default pr-1 icon-size"></i>Projects</button>
                         <!-- </div> -->
                         <!-- <div class="tab-nav"> -->
-                            <button class="tablinks" onclick="openTab(event, 'packages')">Packages</button>
+                            <button class="tablinks" onclick="openTab(event, 'packages')"><i class="fa fa-cube text-default pr-1 icon-size"></i>Packages</button>
                         <!-- </div> -->
                       </div>
                       
                       <!-- Tab content -->
                       <div id="overview" class="tabcontent">
-                        <h3>Overview</h3>
-                        <p>London is the capital city of England.</p>
-                        <img src="./assets/svgs/fork.svg" />
+                        <h3>Pinned</h3>
+                        <div class="overview" id="overview-content"></div>
                       </div>
                       
                       <div id="repositories" class="tabcontent">
-                        <p>Loading...</p>
+                        <div class="mt-4 mb-4">
+                            <input type="text" placeholder="Find a repository..." class="repo-search" />
+                        </div>
+                        <div class="line-break"></div>
+                        <div id="repositories-list"></div>
                       </div>
                       
                       <div id="projects" class="tabcontent">
-                        <h3>Projects</h3>
-                        <p>Tokyo is the capital of Japan.</p>
+                        <div>
+                            <h2 class="text-default mt-8 message">No projects yet</h2>
+                        </div>
                       </div>
 
                       <div id="packages" class="tabcontent">
-                        <h3>Packages</h3>
-                        <p>Lagos is the capital of Nigeria.</p>
+                        <h2 class="text-default mt-8 message">There aren't any packages yet</h2>
                       </div>
                 </div>
             </div>

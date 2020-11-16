@@ -1,5 +1,8 @@
 client = GraphQL.makeClient("https://api.github.com/graphql")
 client.setHeader("Authorization", "bearer " + githubData.token);
+const profilePage = document.querySelector("#profile");
+const loader = document.querySelector('#loader');
+profilePage.style.display = "none";
 
 const query = `
   query Profile { 
@@ -52,14 +55,12 @@ const query = `
             name
             description
             url
-            createdAt
+            updatedAt
             forkCount
             stargazerCount
             languages(first: 1) {
-              edges {
-                node {
-                  name
-                }
+              nodes {
+                name
               }
             }
           }
@@ -124,8 +125,10 @@ function getLanguageColor(lang){
 client.query(query, async function(response){
   console.log(response);
   const data = response;
-  const repositoriesList = document.querySelector("#repositories");
+  const overview = document.querySelector("#overview-content");
+  const repositoriesList = document.querySelector("#repositories-list");
   const bio = document.querySelector("#profile-bio");
+  const repoCount = document.querySelector("#repo-no");
   const { data: { user }, data: { user : { repositories }}} = data
 
   let userData = `
@@ -147,9 +150,27 @@ client.query(query, async function(response){
       <p class="text-md"><i class="fa fa-link pr-1 text-default"></i><a href=${user.websiteUrl}>${user.websiteUrl}</a></p>
       <p class="text-md"><i class="fab fa-twitter pr-1 text-default"></i><a href="https://twitter.com/${user.twitterUsername}">@${user.twitterUsername}</a></p>
     </div>
-    <hr>
   `;
-  bio.innerHTML = userData;
+
+  const noOfPinnedRepos = user.pinnedItems.nodes.length;
+  let pinnedRepos = "";
+  for(let i = 0; i < noOfPinnedRepos; i++){
+    let pinnedRepoData = user.pinnedItems.nodes[i];
+    pinnedRepos += `
+      <div>
+        <div class="p-4 m details">
+          <h5 class="mt-1 mb-0"><i class="fa fa-briefcase text-default pr-1"></i><a href=${pinnedRepoData.url}>${pinnedRepoData.name}</a></h5>
+          <p class="text-default text-sm mt-3 mb-6 pt-0">${pinnedRepoData.description ? pinnedRepoData.description : ''}</p>
+          <div class="text-default last-item"><div class="repo-details">${pinnedRepoData.languages.nodes[0] ? '<div class="language-dot mr-1" style="background-color:'+getLanguageColor(pinnedRepoData.languages.nodes[0].name)+'"></div><span class="pr-4 text-default text-sm">'+ pinnedRepoData.languages.nodes[0].name +'</span>' : ''}
+            ${pinnedRepoData.stargazerCount ? '<span class="pr-4 text-default text-sm nowrap"><i class="far fa-star pr-1"></i>'+ pinnedRepoData.stargazerCount +'</span>':''}
+            ${pinnedRepoData.forkCount ? '<span class="pr-4 text-default text-sm nowrap"><i class="fa fa-code-branch pr-1"></i>'+ pinnedRepoData.forkCount +'</span>':''}
+              <span class="text-default text-sm">Updated ${useMoment(pinnedRepoData.updatedAt)}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    ` 
+  }
 
   const noOfRepos = repositories.nodes.length;
   let repos = "";
@@ -171,12 +192,16 @@ client.query(query, async function(response){
       <button class="mt-5"><i class="far fa-star mr-1"></i>Star</button>
      </div>
     </div>
-    <hr>
+    <div class="line-break"></div>
       `;
     // console.log(i, repositories.nodes[i]["name"])
   }
-  repositoriesList.innerHTML = repos;
 
-  console.log(repositories)
+  bio.innerHTML = userData;
+  overview.innerHTML = pinnedRepos;
+  repoCount.innerHTML = `<span class="repo-no">${repositories.totalCount}</span>`;
+  repositoriesList.innerHTML = repos;
+  loader.style.display = "none";
+  profile.style.display = "block";
 
 })
