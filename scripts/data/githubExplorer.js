@@ -6,7 +6,7 @@ profilePage.style.display = "none";
 
 const query = `
   query Profile { 
-    user(login: "MichaelOlatunji") {
+    user(login: "`+ githubData.username +`") {
       name
       login
       avatarUrl
@@ -86,6 +86,8 @@ const query = `
     }
   }
 `
+
+console.log(query)
 
 function getLanguageColor(lang){
   lang = lang.toLowerCase();
